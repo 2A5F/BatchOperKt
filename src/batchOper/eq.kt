@@ -57,13 +57,3 @@ class Eq<X>(val x: X) {
 }
 
 inline fun<reified X> X.eq(block: Eq<X>.() -> Boolean) = block(Eq(this))
-
-class Eq2<X>(val x: X) {
-    inline operator fun<reified V> V.invoke() = x == this
-    inline infix fun<reified V> Boolean.oor(v: V) = this || x == v
-    inline infix fun<reified T, reified V> T.oor(v: V) = x == this || x == v
-    inline infix fun<reified V> Boolean.aand(v: V) = this && x == v
-    inline infix fun<reified T, reified V> T.aand(v: V) = x == this && x == v
-}
-
-inline fun<reified X> X.eq2(block: Eq2<X>.() -> Boolean) = block(Eq2(this))
